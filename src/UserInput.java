@@ -19,7 +19,7 @@ public class UserInput {
             input = scanner.nextLine();
             if (input.length() == 1 && input.equals(input.toLowerCase())) {
                 isValid = checkInput(input);
-            }else if(input.length() == 1 && Character.UnicodeBlock.of(input.charAt(0)) == Character.UnicodeBlock.CYRILLIC) {
+            } else if (input.length() == 1 && Character.UnicodeBlock.of(input.charAt(0)) == Character.UnicodeBlock.CYRILLIC) {
                 printGameSituation("Некорректный ввод. Необходимо вводить все с маленькой буквы!");
             } else if (gameEngine.isPreLose()) {
                 gameEngine.increaseErrorScore();
@@ -50,7 +50,7 @@ public class UserInput {
 
     private void printGameSituation(String comment) {
         System.out.println(comment);
-        System.out.println(gameEngine.getWordManipulator().getWordmask());
+        System.out.println(gameEngine.getWordManipulator().getWordMask());
         System.out.println(gameEngine.getGamePictures().getPICTURE(gameEngine.getErrorScore()));
     }
 

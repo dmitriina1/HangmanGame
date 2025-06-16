@@ -13,21 +13,13 @@ public class Dictionary {
     private static String FILEPATH;
 
     public Dictionary() {
-        DICTIONARY = new ArrayList<String>();
+        DICTIONARY = new ArrayList<>();
         readFile();
-    }
-
-    public List<String> getDictionary() {
-        return DICTIONARY;
-    }
-
-    public String getWord(int wordIndex) {
-        return DICTIONARY.get(wordIndex);
     }
 
     private void readFile() {
         try {
-            FILEPATH = "src/resources/Dictionary.txt";;
+            FILEPATH = "src/resources/Dictionary.txt";
             File myFile = new File(FILEPATH);
             Scanner myReader = new Scanner(myFile);
             while (myReader.hasNextLine()) {
@@ -38,8 +30,16 @@ public class Dictionary {
         } catch (FileNotFoundException e) {
             System.out.println("Файл не найден.");
         } catch (Exception e) {
-            throw  new RuntimeException(e);
+            throw new RuntimeException(e);
         }
+    }
+
+    public String getWord(int wordIndex) {
+        return DICTIONARY.get(wordIndex);
+    }
+
+    public List<String> getDictionary() {
+        return DICTIONARY;
     }
 
 }

@@ -2,15 +2,26 @@
  * Ядро программы. Отвечает за игру.
  **/
 public class GameEngine {
+
     private int errorScore = 0;
     private GamePictures gamePictures;
     private WordManipulator wordManipulator;
+    private Dictionary dictionary;
 
     public GameEngine() {
-        Dictionary dictionary = new Dictionary();
+        dictionary = new Dictionary();
         wordManipulator = new WordManipulator(dictionary);
         gamePictures = new GamePictures();
+        System.out.println(wordManipulator.getWordMask());
         System.out.println(gamePictures.getPICTURE(getErrorScore()));
+    }
+
+    public void gameSession(GameEngine gameEngine) {
+        do {
+            UserInput userInput = new UserInput(gameEngine);
+            gameEngine.printHangman(userInput.inputChar());
+        }
+        while (gameEngine.isGameOver());
     }
 
     public void printHangman(char letter) {
@@ -22,14 +33,6 @@ public class GameEngine {
         System.out.println(gamePictures.getPICTURE(getErrorScore()));
     }
 
-    public WordManipulator getWordManipulator() {
-        return wordManipulator;
-    }
-
-    public GamePictures getGamePictures() {
-        return gamePictures;
-    }
-
     public void increaseErrorScore() {
         if (isLose()) {
             this.errorScore++;
@@ -39,14 +42,11 @@ public class GameEngine {
     public boolean isGameOver() {
         if (!isLose()) {
             System.out.println("Ты проиграл!");
+            System.out.println(wordManipulator.getHiddenWord());
         } else if (isWin()) {
             System.out.println("Поздравляю, ты победил!");
         }
         return (!isWin() && isLose());
-    }
-
-    public int getErrorScore() {
-        return errorScore;
     }
 
     public boolean isLose() {
@@ -59,6 +59,18 @@ public class GameEngine {
 
     public boolean isWin() {
         return (wordManipulator.isWordCompleted());
+    }
+
+    public WordManipulator getWordManipulator() {
+        return wordManipulator;
+    }
+
+    public GamePictures getGamePictures() {
+        return gamePictures;
+    }
+
+    public int getErrorScore() {
+        return errorScore;
     }
 
 }

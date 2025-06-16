@@ -7,10 +7,10 @@ import java.util.Set;
  **/
 public class WordManipulator {
 
-    private String hidword = "";
-    private String wordmask = "";
-    private static StringBuilder stringBuilder;
     private static final Set<Character> LETTERLIST;
+    private static StringBuilder stringBuilder;
+    private String hiddenword = "";
+    private String wordmask = "";
 
     static {
         stringBuilder = new StringBuilder();
@@ -24,12 +24,11 @@ public class WordManipulator {
     private void takeRandomWord(Dictionary dictionary) {
         Random random = new Random();
         int hiddenWordIndex = random.nextInt(dictionary.getDictionary().size());
-        System.out.println(dictionary.getWord(hiddenWordIndex));
-        hidword = dictionary.getWord(hiddenWordIndex);
+        hiddenword = dictionary.getWord(hiddenWordIndex);
     }
 
     public void createWordMask() {
-        for (Character character : hidword.toCharArray()) {
+        for (Character character : hiddenword.toCharArray()) {
             stringBuilder.append("*");
         }
         wordmask = stringBuilder.toString();
@@ -37,7 +36,7 @@ public class WordManipulator {
     }
 
     public void createWordMask(char letter) {
-        for (Character ch : hidword.toCharArray()) {
+        for (Character ch : hiddenword.toCharArray()) {
             if (ch == letter) {
                 stringBuilder.append(ch);
             } else if (LETTERLIST.contains(ch)) {
@@ -52,26 +51,30 @@ public class WordManipulator {
     }
 
     public boolean checkLetterInWord(char letter) {
-        return !hidword.contains(String.valueOf(letter));
+        return !hiddenword.contains(String.valueOf(letter));
     }
 
-    public String getWordmask() {
+    public String getWordMask() {
         if (wordmask.isEmpty()) {
             createWordMask();
         }
         return wordmask;
     }
 
-    public static Set<Character> getLetterList() {
-        return LETTERLIST;
-    }
-
     public boolean isWordCompleted() {
-        return wordmask.equals(hidword);
+        return wordmask.equals(hiddenword);
     }
 
     public void addLetterList(char letter) {
         LETTERLIST.add(letter);
+    }
+
+    public static Set<Character> getLetterList() {
+        return LETTERLIST;
+    }
+
+    public String getHiddenWord() {
+        return hiddenword;
     }
 
 }
