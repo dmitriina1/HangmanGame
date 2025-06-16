@@ -19,11 +19,11 @@ public class UserInput {
             input = scanner.nextLine();
             if (input.length() == 1 && input.equals(input.toLowerCase())) {
                 isValid = checkInput(input);
-            } else if (input.length() == 1 && Character.UnicodeBlock.of(input.charAt(0)) == Character.UnicodeBlock.CYRILLIC) {
-                printGameSituation("Некорректный ввод. Необходимо вводить все с маленькой буквы!");
-            } else if (gameEngine.isPreLose()) {
+            } else if (gameEngine.isPreLose() && input.length() != 1) {
                 gameEngine.increaseErrorScore();
                 printGameSituation("Некорректный ввод. Необходимо ввести 1 букву.");
+            } else if (input.length() == 1 && Character.UnicodeBlock.of(input.charAt(0)) == Character.UnicodeBlock.CYRILLIC) {
+                printGameSituation("Некорректный ввод. Необходимо вводить все с маленькой буквы!");
             } else {
                 break;
             }
