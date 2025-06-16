@@ -63,7 +63,7 @@ public class PicturesDrawer {
      """,
     };
 
-    public String getPICTURE(int errors) {
+    public String getPicture(int errors) {
         return PICTURES[errors];
     }
 }

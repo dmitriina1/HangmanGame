@@ -15,7 +15,7 @@ public class GameEngine {
         wordManipulator = new WordManipulator(dictionary);
         picturesDrawer = new PicturesDrawer();
         System.out.println(wordManipulator.getWordMask());
-        System.out.println(picturesDrawer.getPICTURE(getErrorScore()));
+        System.out.println(picturesDrawer.getPicture(getErrorScore()));
     }
 
     public static boolean isContinue() {
@@ -49,7 +49,7 @@ public class GameEngine {
             increaseErrorScore();
         }
         wordManipulator.addLetterList(letter);
-        System.out.println(picturesDrawer.getPICTURE(getErrorScore()));
+        System.out.println(picturesDrawer.getPicture(getErrorScore()));
     }
 
     public void increaseErrorScore() {

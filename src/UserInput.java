@@ -57,7 +57,7 @@ public class UserInput {
     private void printGameSituation(String comment) {
         System.out.println(comment);
         System.out.println(gameEngine.getWordManipulator().getWordMask());
-        System.out.println(gameEngine.getGamePictures().getPICTURE(gameEngine.getErrorScore()));
+        System.out.println(gameEngine.getGamePictures().getPicture(gameEngine.getErrorScore()));
     }
 
 }
