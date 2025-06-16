@@ -28,6 +28,7 @@ public class GameEngine {
             } else if (answer.equalsIgnoreCase("Нет")) {
                 return false;
             } else {
+                System.out.println("Ошибка ввода! Введите либо 'Да', либо 'Нет'");
                 answer = sc.nextLine();
             }
         }

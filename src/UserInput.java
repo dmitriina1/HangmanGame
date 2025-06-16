@@ -17,6 +17,12 @@ public class UserInput {
         boolean isValid = false;
         do {
             input = scanner.nextLine();
+
+            if (input.isEmpty()) {
+                printGameSituation("Ошибка: введите хотя бы один символ.");
+                continue;
+            }
+
             if (input.length() == 1 && input.equals(input.toLowerCase())) {
                 isValid = checkInput(input);
             } else if (gameEngine.isPreLose() && input.length() != 1) {
