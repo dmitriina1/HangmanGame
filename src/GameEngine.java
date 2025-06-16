@@ -6,16 +6,16 @@ import java.util.Scanner;
 public class GameEngine {
 
     private int errorScore = 0;
-    private GamePictures gamePictures;
+    private PicturesDrawer picturesDrawer;
     private WordManipulator wordManipulator;
     private Dictionary dictionary;
 
     public GameEngine() {
         dictionary = new Dictionary();
         wordManipulator = new WordManipulator(dictionary);
-        gamePictures = new GamePictures();
+        picturesDrawer = new PicturesDrawer();
         System.out.println(wordManipulator.getWordMask());
-        System.out.println(gamePictures.getPICTURE(getErrorScore()));
+        System.out.println(picturesDrawer.getPICTURE(getErrorScore()));
     }
 
     public static boolean isContinue() {
@@ -49,7 +49,7 @@ public class GameEngine {
             increaseErrorScore();
         }
         wordManipulator.addLetterList(letter);
-        System.out.println(gamePictures.getPICTURE(getErrorScore()));
+        System.out.println(picturesDrawer.getPICTURE(getErrorScore()));
     }
 
     public void increaseErrorScore() {
@@ -84,8 +84,8 @@ public class GameEngine {
         return wordManipulator;
     }
 
-    public GamePictures getGamePictures() {
-        return gamePictures;
+    public PicturesDrawer getGamePictures() {
+        return picturesDrawer;
     }
 
     public int getErrorScore() {

@@ -1,7 +1,7 @@
 /**
  * Класс для хранения рисунков виселицы и передачи их по индексу
  **/
-public class GamePictures {
+public class PicturesDrawer {
 
     private static final String[] PICTURES = {
             """
