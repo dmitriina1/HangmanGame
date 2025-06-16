@@ -28,7 +28,8 @@ public class UserInput {
             } else if (gameEngine.isPreLose() && input.length() != 1) {
                 gameEngine.increaseErrorScore();
                 printGameSituation("Некорректный ввод. Необходимо ввести 1 букву.");
-            } else if (input.length() == 1 && Character.UnicodeBlock.of(input.charAt(0)) == Character.UnicodeBlock.CYRILLIC) {
+            } else if (input.length() == 1
+                    && Character.UnicodeBlock.of(input.charAt(0)) == Character.UnicodeBlock.CYRILLIC) {
                 printGameSituation("Некорректный ввод. Необходимо вводить все с маленькой буквы!");
             } else {
                 break;
