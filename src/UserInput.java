@@ -5,19 +5,15 @@ import java.util.Scanner;
  **/
 public class UserInput {
 
-    private static Scanner scanner;
     private GameEngine gameEngine;
 
     public UserInput(GameEngine gameEngine) {
         this.gameEngine = gameEngine;
     }
 
-    static {
-        scanner = new Scanner(System.in);
-    }
-
     public char inputChar() {
         String input;
+        Scanner scanner = new Scanner(System.in);
         boolean isValid = false;
         do {
             input = scanner.nextLine();

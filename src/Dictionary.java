@@ -10,6 +10,7 @@ import java.util.Scanner;
 public class Dictionary {
 
     private static List<String> DICTIONARY;
+    private static String FILEPATH;
 
     public Dictionary() {
         DICTIONARY = new ArrayList<String>();
@@ -26,7 +27,8 @@ public class Dictionary {
 
     private void readFile() {
         try {
-            File myFile = new File("src/resources/Dictionary.txt");
+            FILEPATH = "src/resources/Dictionary.txt";;
+            File myFile = new File(FILEPATH);
             Scanner myReader = new Scanner(myFile);
             while (myReader.hasNextLine()) {
                 String data = myReader.nextLine();

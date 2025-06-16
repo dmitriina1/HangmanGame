@@ -7,16 +7,14 @@ import java.util.Set;
  **/
 public class WordManipulator {
 
-    private static final Random random;
     private String hidword = "";
     private String wordmask = "";
     private static StringBuilder stringBuilder;
-    private static final Set<Character> letterList;
+    private static final Set<Character> LETTERLIST;
 
     static {
         stringBuilder = new StringBuilder();
-        random = new Random();
-        letterList = new HashSet<>();
+        LETTERLIST = new HashSet<>();
     }
 
     public WordManipulator(Dictionary dictionary) {
@@ -24,6 +22,7 @@ public class WordManipulator {
     }
 
     private void takeRandomWord(Dictionary dictionary) {
+        Random random = new Random();
         int hiddenWordIndex = random.nextInt(dictionary.getDictionary().size());
         System.out.println(dictionary.getWord(hiddenWordIndex));
         hidword = dictionary.getWord(hiddenWordIndex);
@@ -41,7 +40,7 @@ public class WordManipulator {
         for (Character ch : hidword.toCharArray()) {
             if (ch == letter) {
                 stringBuilder.append(ch);
-            } else if (letterList.contains(ch)) {
+            } else if (LETTERLIST.contains(ch)) {
                 stringBuilder.append(ch);
             } else {
                 stringBuilder.append("*");
@@ -64,7 +63,7 @@ public class WordManipulator {
     }
 
     public static Set<Character> getLetterList() {
-        return letterList;
+        return LETTERLIST;
     }
 
     public boolean isWordCompleted() {
@@ -72,7 +71,7 @@ public class WordManipulator {
     }
 
     public void addLetterList(char letter) {
-        letterList.add(letter);
+        LETTERLIST.add(letter);
     }
 
 }
